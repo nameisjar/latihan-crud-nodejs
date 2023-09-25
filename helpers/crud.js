@@ -17,6 +17,11 @@ function index() {
  }
 function show(id) { }
 function update(id, title, body) { }
-function destroy(id) { }
+function destroy(id) { 
+    let destroyPost = posts.data.find(post => post.id == id);
+
+    fs.writeFileSync('./database/posts.json', JSON.stringify(posts, null, 4));
+    return destroyPost;
+}
 
 module.exports = { create, index, show, update, destroy };
