@@ -12,10 +12,18 @@ function create(title, body) {
 function index() {
     let posts = JSON.parse(fs.readFileSync('./database/posts.json'));
     posts.data.forEach((post) => {
-        console.log("nomor = " + post.id, ",title = " + post.title,",konten = " + post.body);
+        console.log("nomor = " + post.id, ", title = " + post.title, ", konten = " + post.body);
     })
- }
-function show(id) { }
+}
+function show(id) {
+    const postsData = JSON.parse(fs.readFileSync('./database/posts.json'));
+    const post = postsData.data.find((p) => p.id === id);
+    if (post) {
+        console.log("nomor = " + post.id, ", title = " + post.title, ", konten = " + post.body);
+    } else {
+        console.log("Post dengan ID " + id + " tidak ditemukan.");
+    }
+}
 function update(id, title, body) { }
 function destroy(id) { }
 
